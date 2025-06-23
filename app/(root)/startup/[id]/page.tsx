@@ -50,22 +50,25 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               <div>
                 <p className="text-20-medium">{post.author.name}</p>
                 <p className="text-16-medium !text-black-300">
-                  {post.author.username}
+                  @{post.author.username}
                 </p>
               </div>
-              <p className="category-tag">{post.category}</p>
             </Link>
+            <p className="category-tag">{post.category}</p>
           </div>
           <h3 className="text-30-bold">Pitch Details</h3>
           {parsedContent ? (
-            <article className="prose max-w-4xl font-work-sans break-all" dangerouslySetInnerHTML={{ __html: parsedContent }} />
+            <article
+              className="prose max-w-4xl font-work-sans break-all"
+              dangerouslySetInnerHTML={{ __html: parsedContent }}
+            />
           ) : (
             <p className="no-result">No details provided</p>
           )}
         </div>
-        <hr className="divider"/>
-        <Suspense fallback={<Skeleton className="view_skeleton"/>}>
-              <View id={id}/>
+        <hr className="divider" />
+        <Suspense fallback={<Skeleton className="view_skeleton" />}>
+          <View id={id} />
         </Suspense>
       </section>
     </>
